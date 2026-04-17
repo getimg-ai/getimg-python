@@ -27,19 +27,88 @@ pip install git+ssh://git@github.com/stainless-sdks/getimg-python.git
 
 The full API of this library can be found in [api.md](api.md).
 
+### Generate an image
+
 ```python
 import os
+import httpx
 from getimg import GetimgAI
 
 client = GetimgAI(
     api_key=os.environ.get("GETIMG_API_KEY"),  # This is the default and can be omitted
 )
 
-response = client.images.generate(
+result = client.images.generate(
     model="seedream-5-lite",
-    prompt="A cinematic portrait of a cat astronaut",
+    prompt="A watercolor painting of a mountain village at dawn",
+    aspect_ratio="16:9",
+    resolution="2K",
+    output_format="png",
 )
-print(response.id)
+
+with open("output.png", "wb") as f:
+    f.write(httpx.get(result.data[0].url).content)
+
+print(f"Saved output.png ({result.data[0].width}x{result.data[0].height})")
+print(f"Cost: {result.usage.total_cost} ({result.usage.billable_unit})")
+```
+
+### Generate a video
+
+Video generation is asynchronous — submit a request, poll until it's `completed`, then download the result.
+
+```python
+import time
+import httpx
+from getimg import GetimgAI
+
+client = GetimgAI()
+
+# Step 1: Submit
+submission = client.videos.generations.create(
+    model="seedance-v1-pro",
+    prompt="A timelapse of clouds rolling over a mountain peak",
+    aspect_ratio="16:9",
+    resolution="1080p",
+    duration=10,
+    sound=True,
+)
+print(f"Submitted: {submission.id}")
+
+# Step 2: Poll
+result = client.videos.generations.retrieve(submission.id)
+while result.status == "pending":
+    time.sleep(5)
+    result = client.videos.generations.retrieve(submission.id)
+    print(f"Status: {result.status}")
+
+if result.status == "failed":
+    raise RuntimeError(f"Failed: {result.error.message}")
+
+# Step 3: Download
+video = result.data[0]
+with open("output.mp4", "wb") as f:
+    f.write(httpx.get(video.url).content)
+
+print(f"Saved output.mp4 ({video.width}x{video.height}, {video.duration}s, {video.fps}fps)")
+print(f"Sound: {video.has_sound}")
+if result.usage:
+    print(f"Cost: {result.usage.total_cost} ({result.usage.quantity} {result.usage.billable_unit})")
+```
+
+### List available models
+
+```python
+from getimg import GetimgAI
+
+client = GetimgAI()
+
+models = client.models.list()
+for model in models:
+    print(f"{model.id} ({model.type}) — {model.name}")
+
+# Optionally filter by type:
+video_models = client.models.list(type="video")
 ```
 
 While you can provide an `api_key` keyword argument,
