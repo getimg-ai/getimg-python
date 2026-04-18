@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.4 (2026-04-18)
+
+Full Changelog: [v0.0.3...v0.0.4](https://github.com/getimg-ai/getimg-python/compare/v0.0.3...v0.0.4)
+
+### Chores
+
+* update SDK settings ([e6fc833](https://github.com/getimg-ai/getimg-python/commit/e6fc8337f8b0d3d26fd7054519568d3940f14aa2))
+* update SDK settings ([00fb9ea](https://github.com/getimg-ai/getimg-python/commit/00fb9eaa406bfb497285ffca6221e6a71b726298))
+
 ## 0.0.3 (2026-04-18)
 
 Full Changelog: [v0.0.2...v0.0.3](https://github.com/getimg-ai/getimg-python/compare/v0.0.2...v0.0.3)
