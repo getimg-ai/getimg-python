@@ -1,9 +1,9 @@
-# Getimg AI Python API library
+# getimg.ai Python API library
 
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/getimg.svg?label=pypi%20(stable))](https://pypi.org/project/getimg/)
 
-The Getimg AI Python library provides convenient access to the Getimg AI REST API from any Python 3.9+
+The getimg.ai Python library provides convenient access to the getimg.ai REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
