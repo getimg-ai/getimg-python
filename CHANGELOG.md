@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.5 (2026-04-23)
+
+Full Changelog: [v0.0.4...v0.0.5](https://github.com/getimg-ai/getimg-python/compare/v0.0.4...v0.0.5)
+
+### Chores
+
+* **internal:** more robust bootstrap script ([908921c](https://github.com/getimg-ai/getimg-python/commit/908921c4bd3b56d81bdfef5ba7eed0a73625d23d))
+
 ## 0.0.4 (2026-04-18)
 
 Full Changelog: [v0.0.3...v0.0.4](https://github.com/getimg-ai/getimg-python/compare/v0.0.3...v0.0.4)
