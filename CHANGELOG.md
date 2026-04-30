@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0 (2026-04-30)
+
+Full Changelog: [v0.0.5...v0.1.0](https://github.com/getimg-ai/getimg-python/compare/v0.0.5...v0.1.0)
+
+### Features
+
+* support setting headers via env ([feeff92](https://github.com/getimg-ai/getimg-python/commit/feeff92cfcef2a591d70e84fcf6e6a65a292d139))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([5705469](https://github.com/getimg-ai/getimg-python/commit/57054691db6399963ca4d48496dfecc58853cc1a))
+
 ## 0.0.5 (2026-04-23)
 
 Full Changelog: [v0.0.4...v0.0.5](https://github.com/getimg-ai/getimg-python/compare/v0.0.4...v0.0.5)
