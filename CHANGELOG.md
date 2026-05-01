@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2026-05-01)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/getimg-ai/getimg-python/compare/v0.1.0...v0.1.1)
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([3a95ee1](https://github.com/getimg-ai/getimg-python/commit/3a95ee1a1efb5bcc7534dcd1914a9018ff76051b))
+
 ## 0.1.0 (2026-04-30)
 
 Full Changelog: [v0.0.5...v0.1.0](https://github.com/getimg-ai/getimg-python/compare/v0.0.5...v0.1.0)
