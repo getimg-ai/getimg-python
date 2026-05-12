@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.0 (2026-05-12)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/getimg-ai/getimg-python/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([67a1102](https://github.com/getimg-ai/getimg-python/commit/67a11029e4b2590866a626d3d97b584e484a803d))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([d07bccc](https://github.com/getimg-ai/getimg-python/commit/d07bcccfacb98b8269647f9af4b7bd472c4ba5c0))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([3a95ee1](https://github.com/getimg-ai/getimg-python/commit/3a95ee1a1efb5bcc7534dcd1914a9018ff76051b))
+
 ## 0.1.0 (2026-04-30)
 
 Full Changelog: [v0.0.5...v0.1.0](https://github.com/getimg-ai/getimg-python/compare/v0.0.5...v0.1.0)
