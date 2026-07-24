@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0 (2026-07-18)
+
+Full Changelog: [v0.2.1...v0.3.0](https://github.com/getimg-ai/getimg-python/compare/v0.2.1...v0.3.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([9c2898e](https://github.com/getimg-ai/getimg-python/commit/9c2898ece0e514b12abfbac030e9fc415573040d))
+
+
+### Bug Fixes
+
+* **auth:** prioritize first auth header ([483db61](https://github.com/getimg-ai/getimg-python/commit/483db61cadf8e4f3b293365e133d76748f4b8bcf))
+* **internal:** resolve build failures ([d26ee9c](https://github.com/getimg-ai/getimg-python/commit/d26ee9cce58ff460065c7dce220814ea32b5c728))
+
 ## 0.2.1 (2026-05-13)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/getimg-ai/getimg-python/compare/v0.2.0...v0.2.1)
