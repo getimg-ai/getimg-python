@@ -74,6 +74,9 @@ class ImagesResource(SyncAPIResource):
           aspect_ratio: Optional output aspect ratio. See
               [supported values by model](https://getimg.ai/app/developer/models).
 
+          images: Optional reference images. See
+              [supported values by model](https://getimg.ai/app/developer/models).
+
           output_format: Output image format.
 
           resolution: Optional output resolution. See
@@ -155,6 +158,9 @@ class AsyncImagesResource(AsyncAPIResource):
           prompt: Description of the image to generate or an editing instruction.
 
           aspect_ratio: Optional output aspect ratio. See
+              [supported values by model](https://getimg.ai/app/developer/models).
+
+          images: Optional reference images. See
               [supported values by model](https://getimg.ai/app/developer/models).
 
           output_format: Output image format.

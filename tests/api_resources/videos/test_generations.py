@@ -77,7 +77,7 @@ class TestGenerations:
     @parametrize
     def test_method_retrieve(self, client: GetimgAI) -> None:
         generation = client.videos.generations.retrieve(
-            "x",
+            "req-01HXYZVIDEO1234",
         )
         assert_matches_type(GenerationRetrieveResponse, generation, path=["response"])
 
@@ -85,7 +85,7 @@ class TestGenerations:
     @parametrize
     def test_raw_response_retrieve(self, client: GetimgAI) -> None:
         response = client.videos.generations.with_raw_response.retrieve(
-            "x",
+            "req-01HXYZVIDEO1234",
         )
 
         assert response.is_closed is True
@@ -97,7 +97,7 @@ class TestGenerations:
     @parametrize
     def test_streaming_response_retrieve(self, client: GetimgAI) -> None:
         with client.videos.generations.with_streaming_response.retrieve(
-            "x",
+            "req-01HXYZVIDEO1234",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -181,7 +181,7 @@ class TestAsyncGenerations:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncGetimgAI) -> None:
         generation = await async_client.videos.generations.retrieve(
-            "x",
+            "req-01HXYZVIDEO1234",
         )
         assert_matches_type(GenerationRetrieveResponse, generation, path=["response"])
 
@@ -189,7 +189,7 @@ class TestAsyncGenerations:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncGetimgAI) -> None:
         response = await async_client.videos.generations.with_raw_response.retrieve(
-            "x",
+            "req-01HXYZVIDEO1234",
         )
 
         assert response.is_closed is True
@@ -201,7 +201,7 @@ class TestAsyncGenerations:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncGetimgAI) -> None:
         async with async_client.videos.generations.with_streaming_response.retrieve(
-            "x",
+            "req-01HXYZVIDEO1234",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
