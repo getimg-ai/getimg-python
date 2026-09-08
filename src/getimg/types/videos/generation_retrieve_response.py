@@ -61,7 +61,7 @@ class VideoGenerationCompletedResponseData(BaseModel):
     """The frame rate of the video."""
 
     has_sound: Optional[bool] = None
-    """Whether the video has and audio track."""
+    """Whether the video has an audio track."""
 
     height: Optional[int] = None
     """The height of the video in pixels."""

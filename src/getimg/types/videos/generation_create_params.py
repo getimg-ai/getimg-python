@@ -48,4 +48,10 @@ class Image(TypedDict, total=False):
     """The role of the reference image."""
 
     url: Required[str]
-    """Publicly accessible reference image URL."""
+    """
+    Publicly accessible HTTPS image URL or a base64 data URL
+    (`data:image/png;base64,...`). Inline formats: PNG, JPEG, and WebP. Bare base64
+    is not accepted. The default decoded image limit is 10 MiB; the entire JSON
+    request must fit within 25 MiB. Base64 adds approximately 33% to the original
+    file size.
+    """

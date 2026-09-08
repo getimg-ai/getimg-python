@@ -57,7 +57,8 @@ class ModelsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ModelListResponse:
         """
-        List available developer models for the authenticated project.
+        List the models available to your project with their supported parameters and
+        pricing.
 
         Args:
           type: Optional model type filter.
@@ -117,7 +118,8 @@ class AsyncModelsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ModelListResponse:
         """
-        List available developer models for the authenticated project.
+        List the models available to your project with their supported parameters and
+        pricing.
 
         Args:
           type: Optional model type filter.

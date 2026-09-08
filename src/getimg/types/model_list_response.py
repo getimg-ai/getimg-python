@@ -1,12 +1,45 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
+from typing import Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal, TypeAlias
 
 from .._models import BaseModel
 
-__all__ = ["ModelListResponse", "ModelListResponseItem"]
+__all__ = [
+    "ModelListResponse",
+    "ModelListResponseItem",
+    "ModelListResponseItemPricing",
+    "ModelListResponseItemPricingRate",
+]
+
+
+class ModelListResponseItemPricingRate(BaseModel):
+    billable_unit: str
+    """Unit billed, such as image or video_second."""
+
+    resolution: Optional[str] = None
+    """Resolution this rate applies to, or null for a resolution-independent rate."""
+
+    sound: Literal["sound_on", "sound_off", "not_applicable"]
+    """
+    Sound setting this rate applies to; not_applicable also serves as a video
+    fallback.
+    """
+
+    unit_price: str
+    """USD price per billable unit, represented as a decimal string."""
+
+
+class ModelListResponseItemPricing(BaseModel):
+    currency: Literal["USD"]
+
+    rates: List[ModelListResponseItemPricingRate]
+    """Currently effective catalog rates, ordered by unit price.
+
+    Empty when no active rates are configured; this does not mean generation is
+    free.
+    """
 
 
 class ModelListResponseItem(BaseModel):
@@ -18,6 +51,29 @@ class ModelListResponseItem(BaseModel):
 
     name: str
     """The model display name."""
+
+    pricing: ModelListResponseItemPricing
+
+    supported_aspect_ratios: List[str]
+    """Supported aspect ratios in default order; the first is used when omitted."""
+
+    supported_durations: List[float]
+    """Supported durations in seconds; empty for image models.
+
+    The first is the default.
+    """
+
+    supported_references: Dict[str, int]
+    """
+    Maximum reference count per supported role (reference_image, first_frame,
+    last_frame).
+    """
+
+    supported_resolutions: List[str]
+    """Supported resolutions in default order; the first is used when omitted."""
+
+    supports_sound: bool
+    """Whether sound generation is supported."""
 
     type: Literal["image", "video"]
     """The generation type supported by the model."""
