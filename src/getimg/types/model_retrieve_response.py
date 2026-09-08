@@ -2,15 +2,15 @@
 
 from typing import Dict, List
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from .._models import BaseModel
 from .developer_model_rate import DeveloperModelRate
 
-__all__ = ["ModelListResponse", "ModelListResponseItem", "ModelListResponseItemPricing"]
+__all__ = ["ModelRetrieveResponse", "Pricing"]
 
 
-class ModelListResponseItemPricing(BaseModel):
+class Pricing(BaseModel):
     currency: Literal["USD"]
 
     rates: List[DeveloperModelRate]
@@ -21,7 +21,7 @@ class ModelListResponseItemPricing(BaseModel):
     """
 
 
-class ModelListResponseItem(BaseModel):
+class ModelRetrieveResponse(BaseModel):
     id: str
     """The model identifier."""
 
@@ -31,7 +31,7 @@ class ModelListResponseItem(BaseModel):
     name: str
     """The model display name."""
 
-    pricing: ModelListResponseItemPricing
+    pricing: Pricing
 
     supported_aspect_ratios: List[str]
     """Supported aspect ratios in default order; the first is used when omitted."""
@@ -56,6 +56,3 @@ class ModelListResponseItem(BaseModel):
 
     type: Literal["image", "video"]
     """The generation type supported by the model."""
-
-
-ModelListResponse: TypeAlias = List[ModelListResponseItem]
