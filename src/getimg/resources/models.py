@@ -8,7 +8,7 @@ import httpx
 
 from ..types import model_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -19,6 +19,7 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.model_list_response import ModelListResponse
+from ..types.model_retrieve_response import ModelRetrieveResponse
 
 __all__ = ["ModelsResource", "AsyncModelsResource"]
 
@@ -45,6 +46,39 @@ class ModelsResource(SyncAPIResource):
         """
         return ModelsResourceWithStreamingResponse(self)
 
+    def retrieve(
+        self,
+        model: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ModelRetrieveResponse:
+        """
+        Retrieve a single model with its supported parameters and pricing.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not model:
+            raise ValueError(f"Expected a non-empty value for `model` but received {model!r}")
+        return self._get(
+            path_template("/v2/models/{model}", model=model),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ModelRetrieveResponse,
+        )
+
     def list(
         self,
         *,
@@ -57,7 +91,8 @@ class ModelsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ModelListResponse:
         """
-        List available developer models for the authenticated project.
+        List the models available to your project with their supported parameters and
+        pricing.
 
         Args:
           type: Optional model type filter.
@@ -105,6 +140,39 @@ class AsyncModelsResource(AsyncAPIResource):
         """
         return AsyncModelsResourceWithStreamingResponse(self)
 
+    async def retrieve(
+        self,
+        model: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ModelRetrieveResponse:
+        """
+        Retrieve a single model with its supported parameters and pricing.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not model:
+            raise ValueError(f"Expected a non-empty value for `model` but received {model!r}")
+        return await self._get(
+            path_template("/v2/models/{model}", model=model),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ModelRetrieveResponse,
+        )
+
     async def list(
         self,
         *,
@@ -117,7 +185,8 @@ class AsyncModelsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ModelListResponse:
         """
-        List available developer models for the authenticated project.
+        List the models available to your project with their supported parameters and
+        pricing.
 
         Args:
           type: Optional model type filter.
@@ -147,6 +216,9 @@ class ModelsResourceWithRawResponse:
     def __init__(self, models: ModelsResource) -> None:
         self._models = models
 
+        self.retrieve = to_raw_response_wrapper(
+            models.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             models.list,
         )
@@ -156,6 +228,9 @@ class AsyncModelsResourceWithRawResponse:
     def __init__(self, models: AsyncModelsResource) -> None:
         self._models = models
 
+        self.retrieve = async_to_raw_response_wrapper(
+            models.retrieve,
+        )
         self.list = async_to_raw_response_wrapper(
             models.list,
         )
@@ -165,6 +240,9 @@ class ModelsResourceWithStreamingResponse:
     def __init__(self, models: ModelsResource) -> None:
         self._models = models
 
+        self.retrieve = to_streamed_response_wrapper(
+            models.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             models.list,
         )
@@ -174,6 +252,9 @@ class AsyncModelsResourceWithStreamingResponse:
     def __init__(self, models: AsyncModelsResource) -> None:
         self._models = models
 
+        self.retrieve = async_to_streamed_response_wrapper(
+            models.retrieve,
+        )
         self.list = async_to_streamed_response_wrapper(
             models.list,
         )

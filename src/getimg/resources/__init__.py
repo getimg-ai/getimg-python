@@ -24,6 +24,14 @@ from .videos import (
     VideosResourceWithStreamingResponse,
     AsyncVideosResourceWithStreamingResponse,
 )
+from .billing import (
+    BillingResource,
+    AsyncBillingResource,
+    BillingResourceWithRawResponse,
+    AsyncBillingResourceWithRawResponse,
+    BillingResourceWithStreamingResponse,
+    AsyncBillingResourceWithStreamingResponse,
+)
 
 __all__ = [
     "ImagesResource",
@@ -44,4 +52,10 @@ __all__ = [
     "AsyncModelsResourceWithRawResponse",
     "ModelsResourceWithStreamingResponse",
     "AsyncModelsResourceWithStreamingResponse",
+    "BillingResource",
+    "AsyncBillingResource",
+    "BillingResourceWithRawResponse",
+    "AsyncBillingResourceWithRawResponse",
+    "BillingResourceWithStreamingResponse",
+    "AsyncBillingResourceWithStreamingResponse",
 ]

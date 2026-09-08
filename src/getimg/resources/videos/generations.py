@@ -124,10 +124,8 @@ class GenerationsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GenerationRetrieveResponse:
-        """Retrieve the current status for a video generation request.
-
-        The response status
-        is `pending`, `failed`, or `completed`.
+        """
+        Retrieve the current status of a video generation request.
 
         Args:
           extra_headers: Send extra headers
@@ -254,10 +252,8 @@ class AsyncGenerationsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GenerationRetrieveResponse:
-        """Retrieve the current status for a video generation request.
-
-        The response status
-        is `pending`, `failed`, or `completed`.
+        """
+        Retrieve the current status of a video generation request.
 
         Args:
           extra_headers: Send extra headers

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 (2026-09-08)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/getimg-ai/getimg-python/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([fd4e347](https://github.com/getimg-ai/getimg-python/commit/fd4e3479579f62d6f4ef1c463d13bc1909ed2ad2))
+* **api:** new endpoints ([390d72f](https://github.com/getimg-ai/getimg-python/commit/390d72f8d53e503101dffd3f74b3914d25235905))
+
 ## 0.3.0 (2026-07-18)
 
 Full Changelog: [v0.2.1...v0.3.0](https://github.com/getimg-ai/getimg-python/compare/v0.2.1...v0.3.0)

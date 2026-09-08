@@ -36,9 +36,10 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import images, models, videos
+    from .resources import images, models, videos, billing
     from .resources.images import ImagesResource, AsyncImagesResource
     from .resources.models import ModelsResource, AsyncModelsResource
+    from .resources.billing import BillingResource, AsyncBillingResource
     from .resources.videos.videos import VideosResource, AsyncVideosResource
 
 __all__ = [
@@ -136,6 +137,13 @@ class GetimgAI(SyncAPIClient):
         from .resources.models import ModelsResource
 
         return ModelsResource(self)
+
+    @cached_property
+    def billing(self) -> BillingResource:
+        """Developer API balance and usage costs."""
+        from .resources.billing import BillingResource
+
+        return BillingResource(self)
 
     @cached_property
     def with_raw_response(self) -> GetimgAIWithRawResponse:
@@ -342,6 +350,13 @@ class AsyncGetimgAI(AsyncAPIClient):
         return AsyncModelsResource(self)
 
     @cached_property
+    def billing(self) -> AsyncBillingResource:
+        """Developer API balance and usage costs."""
+        from .resources.billing import AsyncBillingResource
+
+        return AsyncBillingResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncGetimgAIWithRawResponse:
         return AsyncGetimgAIWithRawResponse(self)
 
@@ -487,6 +502,13 @@ class GetimgAIWithRawResponse:
 
         return ModelsResourceWithRawResponse(self._client.models)
 
+    @cached_property
+    def billing(self) -> billing.BillingResourceWithRawResponse:
+        """Developer API balance and usage costs."""
+        from .resources.billing import BillingResourceWithRawResponse
+
+        return BillingResourceWithRawResponse(self._client.billing)
+
 
 class AsyncGetimgAIWithRawResponse:
     _client: AsyncGetimgAI
@@ -513,6 +535,13 @@ class AsyncGetimgAIWithRawResponse:
         from .resources.models import AsyncModelsResourceWithRawResponse
 
         return AsyncModelsResourceWithRawResponse(self._client.models)
+
+    @cached_property
+    def billing(self) -> billing.AsyncBillingResourceWithRawResponse:
+        """Developer API balance and usage costs."""
+        from .resources.billing import AsyncBillingResourceWithRawResponse
+
+        return AsyncBillingResourceWithRawResponse(self._client.billing)
 
 
 class GetimgAIWithStreamedResponse:
@@ -541,6 +570,13 @@ class GetimgAIWithStreamedResponse:
 
         return ModelsResourceWithStreamingResponse(self._client.models)
 
+    @cached_property
+    def billing(self) -> billing.BillingResourceWithStreamingResponse:
+        """Developer API balance and usage costs."""
+        from .resources.billing import BillingResourceWithStreamingResponse
+
+        return BillingResourceWithStreamingResponse(self._client.billing)
+
 
 class AsyncGetimgAIWithStreamedResponse:
     _client: AsyncGetimgAI
@@ -567,6 +603,13 @@ class AsyncGetimgAIWithStreamedResponse:
         from .resources.models import AsyncModelsResourceWithStreamingResponse
 
         return AsyncModelsResourceWithStreamingResponse(self._client.models)
+
+    @cached_property
+    def billing(self) -> billing.AsyncBillingResourceWithStreamingResponse:
+        """Developer API balance and usage costs."""
+        from .resources.billing import AsyncBillingResourceWithStreamingResponse
+
+        return AsyncBillingResourceWithStreamingResponse(self._client.billing)
 
 
 Client = GetimgAI
